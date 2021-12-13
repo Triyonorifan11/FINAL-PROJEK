@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # PEMLAN-SEMESTER-3--C-
 
 Kelompok 8 Perograman Lanjut B081
