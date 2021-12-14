@@ -22,8 +22,8 @@ struct lokasi_kos{
 struct pemilik_kos{
 	long long int harga;
 	lokasi_kos lokasi;
-	char fasilitas[300];
-	char tipe[15];
+	int fasilitas;
+	int tipe;
 }Kos;
 
 
@@ -49,7 +49,7 @@ void exit(){
 	printf("================================================     Terima kasih telah menggunakan aplikasi Kos sederhana      ========================================================\n");
 	printf("========================================================================================================================================================================\n");
 	printf("........................................................................................................................................................................\n\n");
-	puts("\n\n\t\t\t\tDibuat oleh Kelompok Final projek Pemrograman Lanjut B081");
+	puts("\n\n\t\t\t\tDibuat oleh Kelompok 8 Final projek Pemrograman Lanjut B081");
 	puts("\n\t\t\t\tFakultas Ilmu Komputer");
 	puts("\n\t\t\t\tProgram Studi Informatika");
 	puts("\n\t\t\t\tTerima kasih telah menggunakan Aplikasi ini\n\n\n");
@@ -169,25 +169,67 @@ void Penyewa_Kos(){
 }
 
 void input_kos(){
+	
 	FILE *fptr;
 	fptr = fopen("Ummik_Kos.txt","a"); //menghasilkan pointer
 	
+	ulangi_tipe:
+	system("cls");
 	printf("\n\n\t\t\t\t\t===== Masukkan inputan dibawah ini =====\n");
-	printf("\n\t\t\t\t\tMasukkan tipe rumah (LK/P) = ");
-	scanf("%s", &Kos.tipe);
-	printf("\n\t\t\t\t\tMasukkan alamat:");
+	printf("\t\t\t\t\t........................................\n");
+	printf("\t\t\t\t\t=============== Tipe Kos ===============\n");
+	printf("\n\t\t\t\t\t[1]Putra\n");
+	printf("\n\t\t\t\t\t[2]Putri\n");
+	printf("\n\t\t\t\t\t[3]Campur(Wajib mahram)\n");
+	printf("\n\t\t\t\t\tPilih salah satu [1/2/3] = ");
+	scanf("%d", &Kos.tipe);
+	
+	if(Kos.tipe!=1&&Kos.tipe!=2&&Kos.tipe!=3){
+		puts("\t\t\t\t\tInputan salah! tolong inputkan dengan benar!");
+		system("pause");
+		goto ulangi_tipe;
+	}
+	
+	system("cls");
+	printf("\n\n\t\t\t\t\t===== Masukkan inputan dibawah ini =====\n");
+	printf("\t\t\t\t\t........................................\n");
+	printf("\t\t\t\t\t============== Alamat Kos ==============\n");
+	printf("\n\t\t\t\t\tMasukkan Alamat:");
 	printf("\n\t\t\t\t\t\tProvinsi = ");
 	scanf(" %[^\n]s", &Kos.lokasi.provinsi);
-	printf("\t\t\t\t\t\tKabupaten = ");
+	printf("\n\t\t\t\t\t\tKabupaten = ");
 	scanf(" %[^\n]s", &Kos.lokasi.Kabupaten);
-	printf("\t\t\t\t\t\tJalan = ");
+	printf("\n\t\t\t\t\t\tJalan = ");
 	scanf(" %[^\n]s", &Kos.lokasi.jalan);
+	
+	system("cls");
+	printf("\n\n\t\t\t\t\t===== Masukkan inputan dibawah ini =====\n");
+	printf("\t\t\t\t\t........................................\n");
+	printf("\n\t\t\t\t\t========= Harga Kos per Bulan ========\n");
 	printf("\n\t\t\t\t\tHarga = ");
 	scanf("%lld", &Kos.harga);
-	printf("\n\t\t\t\t\tFasilitas = ");
-	scanf(" %[^\n]s", &Kos.fasilitas);
+	printf("\t\t\t\t\t........................................\n");
 	
-	fprintf(fptr,"%s %s %s %s %lld %s \n", Kos.tipe, Kos.lokasi.provinsi, Kos.lokasi.Kabupaten, Kos.lokasi.jalan, Kos.harga, Kos.fasilitas);
+	ulangi_fasilitas:
+	system("cls");
+	printf("\n\n\t\t\t\t\t===== Masukkan inputan dibawah ini =====\n");
+	printf("\t\t\t\t\t........................................\n");
+	printf("\n\t\t\t\t\t============ Fasilitas Kos ===========\n");
+	printf("\n\t\t\t\t\t[1] Wifi\n");
+	printf("\n\t\t\t\t\t[2] Kamar Mandi dalam\n");
+	printf("\n\t\t\t\t\t[3] AC\n");
+	printf("\n\t\t\t\t\t[4] 2 diantara 3 pilihan diatas\n");
+	printf("\n\t\t\t\t\t[5] Lengkap!\n");
+	printf("\n\t\t\t\t\tPilih salah satu [1/2/3/4/5] = ");
+	scanf("%d", &Kos.fasilitas);
+	if(Kos.fasilitas!=(1&&2&&3&&4&&5)){
+		puts("\t\t\t\t\tInputan salah! tolong inputkan dengan benar!");
+		system("pause");
+		goto ulangi_fasilitas;
+	}
+	printf("\t\t\t\t\t........................................\n");
+	
+	fprintf(fptr,"%d %s %s %s %lld %d \n", Kos.tipe, Kos.lokasi.provinsi, Kos.lokasi.Kabupaten, Kos.lokasi.jalan, Kos.harga, Kos.fasilitas);
 	fclose(fptr);
 	
 	puts("\t\t\t ===============================");
