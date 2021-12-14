@@ -207,6 +207,7 @@ void lihat_kos(){
 	printf("========================================================================================================================================================================\n");
 	printf("........................................................................................................................................................................\n\n");
 	int pilih;
+	char buff[500];
 	FILE *view;
 	
 	view = fopen("Ummik_Kos.txt","r");
@@ -217,9 +218,9 @@ void lihat_kos(){
 		puts("\t\t\t ===============================\n");
 	}
 	else{
-		while(fscanf(view, " %s %s %s %s %lld %s", &Kos.tipe, &Kos.lokasi.provinsi, &Kos.lokasi.Kabupaten, &Kos.lokasi.jalan, &Kos.harga, &Kos.fasilitas)!=EOF){
-	        printf("%s %s %s %s %lld %s \n", Kos.tipe, Kos.lokasi.provinsi, Kos.lokasi.Kabupaten, Kos.lokasi.jalan, Kos.harga, Kos.fasilitas);
-	        jumlah_kos++;
+			while(fgets(buff, sizeof(buff), view)){
+		        printf("%s\n", buff);
+		        jumlah_kos++;
    		}
 	}
 	printf("\t\t\t\tjumlah banyak kos %d\n", jumlah_kos);
