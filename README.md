@@ -10,3 +10,7 @@ Nama Anggota:
 4. IBET MAULANA 					(20081010067)
 5. HAFID ALFA ANAMSYAH 		    	(20081010189)
 6. CHANDRA IKA NUGROHO 		    	(20081010212)
+
+# Tampilan Awal Aplikasi
+
+![Screenshot (75)](https://user-images.githubusercontent.com/75284893/147014713-b3e17cd2-d132-407e-9c5b-77c0b97b7cbe.png)
