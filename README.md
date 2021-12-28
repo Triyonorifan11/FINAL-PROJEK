@@ -1,6 +1,6 @@
 # <p align = "center">Aplikasi Penyewaan Kos Bernama "Ummik Kos"</p>
 
-# Scrennshot Aplikasi
+# Screnshot Aplikasi
 ### Tampilan Awal
 ![Screenshot (83)](https://user-images.githubusercontent.com/75284893/147586929-64dfa03e-3bf4-48fb-82cb-93ec2a12cc91.png)
 
@@ -19,7 +19,7 @@
 Kelompok 8 Perograman Lanjut B081
 Nama Anggota:
   1. TRIYONO RIFAN (20081010003)
-  2. SALMA FATHIYATUR RIZKY MUNIR(20081010025)
+  2. SALMA FATHIYATUR RIZKY MUNIR (20081010025)
   3. AHMAD HILMAN DANI (20081010057)
   4. IBET MAULANA (20081010067)
   5. HAFID ALFA ANAMSYAH 20081010189)
@@ -69,3 +69,4 @@ Nama Anggota:
 - pilih menu yang anda inginkan untuk selanjutnya
 - selamat anda berhasil menjalankan
 - data tersimpan pada Folder Data Pemilik Kos
+- data bertipe integer (bilangan) berbeda file dengan data bertipe string (kata)
