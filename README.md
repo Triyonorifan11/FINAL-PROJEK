@@ -1,8 +1,20 @@
 # <p align = "center">Aplikasi Penyewaan Kos Bernama "Ummik Kos"</p>
 
-# Tampilan Awal Aplikasi
+# Scrennshot Aplikasi
+### Tampilan Awal
+![Screenshot (83)](https://user-images.githubusercontent.com/75284893/147586929-64dfa03e-3bf4-48fb-82cb-93ec2a12cc91.png)
 
-![Screenshot (75)](https://user-images.githubusercontent.com/75284893/147014713-b3e17cd2-d132-407e-9c5b-77c0b97b7cbe.png)
+### Tampilan Menu Pemilik Kos
+![Screenshot (84)](https://user-images.githubusercontent.com/75284893/147586995-ee3cbf12-9e6b-4536-933f-40f2f7017e60.png)
+
+### Tampilan Menu Penyewa Kos
+![Screenshot (85)](https://user-images.githubusercontent.com/75284893/147587051-9f104e5f-2fb4-4870-bec9-571350ab7605.png)
+
+### Tampilan Filter Pencarian Kos pada Penyewa Kos
+![Screenshot (86)](https://user-images.githubusercontent.com/75284893/147587108-18515be0-9176-4aaa-a697-2e62ab363a91.png)
+
+###Tampilan Akhir Aplikasi
+![Screenshot (87)](https://user-images.githubusercontent.com/75284893/147587178-ec052af9-964f-43e1-a601-611b866d82e3.png)
 
 Kelompok 8 Perograman Lanjut B081
 Nama Anggota:
@@ -28,6 +40,8 @@ Nama Anggota:
 
 # Metode yang digunakan
 - [x] Linear Search
+- [x] struct
+- [x] pointer
 - [x] Selection Sort
 
 
