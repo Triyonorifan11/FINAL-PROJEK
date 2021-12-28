@@ -42,6 +42,7 @@ Nama Anggota:
 - [x] Linear Search
 - [x] struct
 - [x] pointer
+- [x] Operasi File
 - [x] Selection Sort
 
 
