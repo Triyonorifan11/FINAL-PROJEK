@@ -13,7 +13,7 @@
 ### Tampilan Filter Pencarian Kos pada Penyewa Kos
 ![Screenshot (86)](https://user-images.githubusercontent.com/75284893/147587108-18515be0-9176-4aaa-a697-2e62ab363a91.png)
 
-###Tampilan Akhir Aplikasi
+### Tampilan Akhir Aplikasi
 ![Screenshot (87)](https://user-images.githubusercontent.com/75284893/147587178-ec052af9-964f-43e1-a601-611b866d82e3.png)
 
 Kelompok 8 Perograman Lanjut B081
