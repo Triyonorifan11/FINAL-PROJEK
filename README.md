@@ -61,8 +61,11 @@ Nama Anggota:
  - **Close**
 
 # cara penggunaan aplikasi
+- Compile file .cpp untuk membuat file .exe
 - Buka Aplikasi Ummik Kos.exe
 - Masukkan pilihan anda sebagai Pemilik atau penyewa kos
 - pilih menu yang sudah tersedia
+- pilih Dari 2 pilihan, apakah Anda pemilik Kos atau Penyewa Kos
+- pilih menu yang anda inginkan untuk selanjutnya
 - selamat anda berhasil menjalankan
 - data tersimpan pada Folder Data Pemilik Kos
