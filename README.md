@@ -40,6 +40,8 @@ Nama Anggota:
 
 # Metode yang digunakan
 - [x] Linear Search
+- [x] struct
+- [x] pointer
 - [x] Selection Sort
 
 
