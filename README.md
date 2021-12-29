@@ -5,7 +5,7 @@
 ![Screenshot (83)](https://user-images.githubusercontent.com/75284893/147586929-64dfa03e-3bf4-48fb-82cb-93ec2a12cc91.png)
 
 ### Tampilan Menu Pemilik Kos
-![Screenshot (84)](https://user-images.githubusercontent.com/75284893/147586995-ee3cbf12-9e6b-4536-933f-40f2f7017e60.png)
+![Screenshot (89)](https://user-images.githubusercontent.com/75284893/147682152-b54fcf55-13ed-4cf3-876d-ebe18833a280.png)
 
 ### Tampilan Update Kos
 ![Screenshot (88)](https://user-images.githubusercontent.com/75284893/147651191-2e63d2a2-c9c6-4459-8f06-e2936d2f23db.png)
@@ -48,6 +48,7 @@ Nama Anggota:
 - [x] Operasi File
 - [x] Selection Sort
 - [x] Update Data
+- [x] Hapus Kos (dalam perbaikan sedikit)
 
 
 # list menu yang ditawarkan
@@ -56,6 +57,7 @@ Nama Anggota:
     - Input Kos
     - Update Kos
     - Lihat daftar Kos
+    - Hapus Kos
  - **Penyewa**
     - Cari Kos
         - Berdasarkan Provinsi
