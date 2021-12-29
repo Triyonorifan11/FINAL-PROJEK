@@ -41,7 +41,6 @@ void input_kos();
 void update_kos();
 void lihat_kos();
 void lihat_kos_UIpenyewa();
-void CariHarga();
 void exit();
 void SewaCariKamar();
 void SewaCariKamarTipe();
@@ -200,7 +199,226 @@ void Penyewa_Kos(){
 	mainMenu();
 }
 
+//===================Fungsi Update Kos
+void update_kos(){
 
+	int i=0, j=0, index = 0;
+	int cari_IdKos, pilih_update;
+	
+	FILE *view_FlagTotalData;
+	view_FlagTotalData = fopen("Data Pemilik Kos/flag_data_pemilik_kos.txt","r");
+	fscanf(view_FlagTotalData,"%d", &total_data);
+	
+	FILE *view_int;
+	FILE *view_string_provinsi;
+	FILE *view_string_kabupaten;
+	FILE *view_string_jalan;
+	FILE *view_NamaPemilikKos;
+			
+	view_int = fopen("Data Pemilik Kos/Ummik_Kos.txt","r");
+	view_string_provinsi = fopen("Data Pemilik Kos/data_pemilik_kos_string_provinsi.txt","r");
+	view_string_kabupaten = fopen("Data Pemilik Kos/data_pemilik_kos_string_kabupaten.txt","r");
+	view_string_jalan = fopen("Data Pemilik Kos/data_pemilik_kos_string_jalan.txt","r");
+	view_NamaPemilikKos = fopen("Data Pemilik Kos/NamaPemilik.txt","r");
+	
+	system("cls");
+	printf("||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||\n\n");
+	printf("........................................................................................................................................................................\n");
+	printf("========================================================================================================================================================================\n");
+	printf("================================================                          UMMIK.KOS                             ========================================================\n");
+	printf("================================================             Laman ''Update'' KOS di UMMIK KOS                  ========================================================\n");
+	printf("========================================================================================================================================================================\n");
+	printf("........................................................................................................................................................................\n\n");
+
+			
+	if(view_int==NULL)
+	{
+	
+		printf("\n\n\n");
+		puts("\t\t\t ===============================");
+		puts("\t\t\t ||     Belum ada data KOS    ||");
+		puts("\t\t\t ===============================\n");
+	}
+	
+	else
+	{
+			
+		while(!feof(view_int))
+		{
+			fflush(stdin);
+						
+			fscanf(view_int,"%d %lld %d %f %f %f %d", &ArrayKos[index].tipe, &ArrayKos[index].harga, &ArrayKos[index].fasilitas, &ArrayKos[index].PanjangKamar, &ArrayKos[index].LebarKamar, &ArrayKos[index].LuasKamar, &ArrayKos[index].IdKos);
+			fflush(stdin);
+							
+			fscanf(view_string_provinsi," %[^\n]s", &ArrayKos[index].lokasi.provinsi);
+		    fscanf(view_string_kabupaten," %[^\n]s", &ArrayKos[index].lokasi.Kabupaten);
+		    fscanf(view_string_jalan," %[^\n]s", &ArrayKos[index].lokasi.jalan);
+		    fscanf(view_NamaPemilikKos," %[^\n]s", &ArrayKos[index].NamaPemilikKos);
+			index++;
+		}
+			
+		fclose(view_FlagTotalData);
+		fclose(view_string_provinsi);
+		fclose(view_int);
+		fclose(view_string_kabupaten);
+		fclose(view_string_jalan);
+		fclose(view_NamaPemilikKos);
+		
+		printf("\n\t\t\t\t\t=================== Menu Update Ummik Kos ==================\n\n");
+		
+		fflush(stdin);		
+		printf("\n\t\t\t\tMasukkan ID kos yang akan di Update = ");
+		scanf("%d", &cari_IdKos);
+		
+		FILE *Nama_baru;
+		Nama_baru = fopen("Data Pemilik Kos/NamaPemilik_Update.txt","w");
+		
+		int flag = 0;
+		for(i=0;i<index;i++)
+		{
+			if(cari_IdKos == ArrayKos[i].IdKos){
+				flag = 1;
+				ulangi_update:
+				printf("========================================================================================================================================================================\n");
+		        printf("|| \t\t\t\tID Kos\t: %d Akan di Update!\n", ArrayKos[i].IdKos);
+		        printf("\n\n\t\t\t\t====Silahkan Pilih yang akan di Update====\n\n");
+				printf("\n\t\t\t\t[1] Nama Pemilik Kos\n");
+				printf("\n\t\t\t\t[2] Tipe Kos\n");
+				printf("\n\t\t\t\t[3] Harga Kos\n");
+				printf("\n\t\t\t\t[4] Fasilitas Kos\n");
+				printf("\n\t\t\t\t[5] Kembali\n");
+				printf("\n\t\t\t\tSilahkan Pilih dari menu diatas = ");
+				scanf("%d", &pilih_update);
+				
+				if(pilih_update == 1){
+					FILE *Nama_baru;
+					Nama_baru = fopen("Data Pemilik Kos/NamaPemilik_Update.txt","w");
+					printf("\n\t\t\t\tMasukkan Nama Pemilik Kos baru = ");
+					scanf(" %[^\n]s", &Update[i].NamaPemilikKos);
+					strcpy(ArrayKos[i].NamaPemilikKos, Update[i].NamaPemilikKos);
+					
+					FILE *fptr_flag_baru;
+					fptr_flag_baru = fopen("Data Pemilik Kos/flag_data_pemilik_kos_update.txt","r");
+					
+					for(j = 0; j<index; j++){
+						if(fptr_flag_baru == NULL){
+							fprintf(Nama_baru, "%s", ArrayKos[j].NamaPemilikKos);	
+						}
+						else{
+							fprintf(Nama_baru, "\n%s", ArrayKos[j].NamaPemilikKos);	
+						}
+					}
+					fclose(fptr_flag_baru);
+					printf("\n\t\t\t\t Data Telah Tersimpan\n\n");
+					fclose(Nama_baru);
+					remove("Data Pemilik Kos/NamaPemilik.txt");
+					rename("Data Pemilik Kos/NamaPemilik_Update.txt", "Data Pemilik Kos/NamaPemilik.txt");
+					
+				}
+				else if(pilih_update == 2){
+					FILE *Tipe_baru;
+					Tipe_baru = fopen("Data Pemilik Kos/Update_Ummik_Kos.txt","w");
+					printf("\n\t\t\t\tMasukkan Tipe Kos baru = ");
+					scanf("%d", &Update[i].tipe);
+					ArrayKos[i].tipe = Update[i].tipe;
+				
+							FILE *fptr_flag_baru;
+							fptr_flag_baru = fopen("Data Pemilik Kos/flag_data_pemilik_kos_update.txt","r");
+					
+					for(j = 0; j < index; j++){
+						if(fptr_flag_baru==NULL){
+							fprintf(Tipe_baru,"%d %lld %d %.2f %.2f %.2f %d", ArrayKos[j].tipe, ArrayKos[j].harga, ArrayKos[j].fasilitas, ArrayKos[j].PanjangKamar, ArrayKos[j].LebarKamar, ArrayKos[j].LuasKamar, ArrayKos[j].IdKos);
+												
+						}
+						else{
+							fprintf(Tipe_baru,"\n%d %lld %d %.2f %.2f %.2f %d", ArrayKos[j].tipe, ArrayKos[j].harga, ArrayKos[j].fasilitas, ArrayKos[j].PanjangKamar, ArrayKos[j].LebarKamar, ArrayKos[j].LuasKamar, ArrayKos[j].IdKos);
+														
+						}
+					}
+					fclose(fptr_flag_baru);
+					printf("\n\t\t\t\t Data Telah Tersimpan\n\n");			
+					fclose(Tipe_baru);
+					remove("Data Pemilik Kos/Ummik_Kos.txt");
+					rename("Data Pemilik Kos/Update_Ummik_Kos.txt", "Data Pemilik Kos/Ummik_Kos.txt");
+				}
+				
+				else if(pilih_update == 3){
+					FILE *Harga_baru;
+					Harga_baru = fopen("Data Pemilik Kos/Update_Ummik_Kos.txt","w");
+					printf("\n\t\t\t\tMasukkan Harga Kos baru = ");
+					scanf("%lld", &Update[i].harga);
+					ArrayKos[i].harga = Update[i].harga;
+				
+							FILE *fptr_flag_baru;
+							fptr_flag_baru = fopen("Data Pemilik Kos/flag_data_pemilik_kos_update.txt","r");
+					
+					for(j = 0; j < index; j++){
+						if(fptr_flag_baru==NULL){
+							fprintf(Harga_baru,"%d %lld %d %.2f %.2f %.2f %d", ArrayKos[j].tipe, ArrayKos[j].harga, ArrayKos[j].fasilitas, ArrayKos[j].PanjangKamar, ArrayKos[j].LebarKamar, ArrayKos[j].LuasKamar, ArrayKos[j].IdKos);
+												
+						}
+						else{
+							fprintf(Harga_baru,"\n%d %lld %d %.2f %.2f %.2f %d", ArrayKos[j].tipe, ArrayKos[j].harga, ArrayKos[j].fasilitas, ArrayKos[j].PanjangKamar, ArrayKos[j].LebarKamar, ArrayKos[j].LuasKamar, ArrayKos[j].IdKos);
+														
+						}
+					}
+					fclose(fptr_flag_baru);
+					printf("\n\t\t\t\t Data Telah Tersimpan\n\n");			
+					fclose(Harga_baru);
+					remove("Data Pemilik Kos/Ummik_Kos.txt");
+					rename("Data Pemilik Kos/Update_Ummik_Kos.txt", "Data Pemilik Kos/Ummik_Kos.txt");
+				}
+				else if(pilih_update == 4){
+					FILE *Fasilitas_baru;
+					Fasilitas_baru = fopen("Data Pemilik Kos/Update_Ummik_Kos.txt","w");
+					printf("\n\t\t\t\tMasukkan Harga Kos baru = ");
+					scanf("%d", &Update[i].fasilitas);
+					ArrayKos[i].fasilitas = Update[i].fasilitas;
+				
+							FILE *fptr_flag_baru;
+							fptr_flag_baru = fopen("Data Pemilik Kos/flag_data_pemilik_kos_update.txt","r");
+					
+					for(j = 0; j < index; j++){
+						if(fptr_flag_baru==NULL){
+							fprintf(Fasilitas_baru,"%d %lld %d %.2f %.2f %.2f %d", ArrayKos[j].tipe, ArrayKos[j].harga, ArrayKos[j].fasilitas, ArrayKos[j].PanjangKamar, ArrayKos[j].LebarKamar, ArrayKos[j].LuasKamar, ArrayKos[j].IdKos);
+												
+						}
+						else{
+							fprintf(Fasilitas_baru,"\n%d %lld %d %.2f %.2f %.2f %d", ArrayKos[j].tipe, ArrayKos[j].harga, ArrayKos[j].fasilitas, ArrayKos[j].PanjangKamar, ArrayKos[j].LebarKamar, ArrayKos[j].LuasKamar, ArrayKos[j].IdKos);
+														
+						}
+					}
+					fclose(fptr_flag_baru);
+					printf("\n\t\t\t\t Data Telah Tersimpan\n\n");			
+					fclose(Fasilitas_baru);
+					remove("Data Pemilik Kos/Ummik_Kos.txt");
+					rename("Data Pemilik Kos/Update_Ummik_Kos.txt", "Data Pemilik Kos/Ummik_Kos.txt");
+				}
+				else if(pilih_update == 5){
+					Penyewa_Kos();
+					break;
+				}
+				else{
+					puts("\t\t\t\t\tInputan salah! tolong inputkan dengan benar!");
+					system("pause");
+					goto ulangi_update;
+				}
+				
+			}
+		}
+		
+		if(flag==0){
+				printf("\n\n\t\t\t\t\t........................................\n");
+				printf("\t\t\t\t\t          DATA TIDAK DITEMUKAN!         \n");
+				printf("\t\t\t\t\t........................................\n");
+			}	
+	}
+						
+	system("Pause");
+	Pemilik_Kos();
+}
+
+//============Fungsi Pencarian Kos
 void SewaCariKamar(){
 	system("cls");
 	printf("||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||\n\n");
@@ -343,7 +561,7 @@ void SewaCariKamarProvinsi(){
 				printf("\t\t\t\t\t          DATA TIDAK DITEMUKAN!         \n");
 				printf("\t\t\t\t\t........................................\n");
 			}
-    	}
+    }
     system("Pause");
 	Penyewa_Kos();
 }
@@ -417,13 +635,12 @@ void SewaCariKamarKabupaten(){
 		printf("\n\t\t\tKabupaten bagian mana yang ingin dicari = ");
 		scanf(" %[^\n]s", &CariKabupatenKos);
 		
-//		BandingCariProvinsi = toupper(CariProvinsiKos);
 		SelectionSort_Asc();
 		
 		int flag = 0;
 		for(i=0;i<total_data;i++)
 		{
-//			BandingDataArrayProvinsi = toupper(ArrayKos[i].lokasi.provinsi);
+
 			if( strcmp(CariKabupatenKos,ArrayKos[i].lokasi.Kabupaten) == 0 ){
 				printf("========================================================================================================================================================================\n");
 		        printf("|| \tID Kos\t: %d \n", ArrayKos[i].IdKos);
@@ -545,7 +762,7 @@ void SewaCariKamarTipe(){
 		        printf("|| \tHarga \t\t: %lld\n", ArrayKos[i].harga);
 				flag = 1;
 				}
-			}
+		}
 			printf("========================================================================================================================================================================\n\n\n");
 	   		printf("========================================================================================================================================================================\n");
    			printf("|| \t KETERANGAN FASILITAS\n");
@@ -953,81 +1170,6 @@ void lihat_kos_UIpenyewa(){
 			goto ulang_disini;
 	}
 }
-
-
-//Fungsi ini masih dalam perbaikan
-void update_kos(){
-	int pilih, i = 0, j, index = 0, add = 0;
-	
-	FILE *view_FlagTotalData;
-	view_FlagTotalData = fopen("Data Pemilik Kos/flag_data_pemilik_kos.txt","r");
-	fscanf(view_FlagTotalData,"%d", &total_data);
-	
-	FILE *view_int;
-	FILE *view_string_provinsi;
-	FILE *view_string_kabupaten;
-	FILE *view_string_jalan;
-	FILE *view_NamaPemilikKos;
-			
-	view_int = fopen("Data Pemilik Kos/Ummik_Kos.txt","r");
-	view_string_provinsi = fopen("Data Pemilik Kos/data_pemilik_kos_string_provinsi.txt","r");
-	view_string_kabupaten = fopen("Data Pemilik Kos/data_pemilik_kos_string_kabupaten.txt","r");
-	view_string_jalan = fopen("Data Pemilik Kos/data_pemilik_kos_string_jalan.txt","r");
-	view_NamaPemilikKos = fopen("Data Pemilik Kos/NamaPemilik.txt","r");
-	
-	system("cls");
-	printf("........................................................................................................................................................................\n");
-	printf("========================================================================================================================================================================\n");
-	printf("================================================                          UMMIK.KOS                             ========================================================\n");
-	printf("================================================                Update Data KOS di UMMIK KOS                    ========================================================\n");
-	printf("========================================================================================================================================================================\n");
-	printf("........................................................................................................................................................................\n\n");
-
-	printf("\n\n\t\t\t\tMasukkan ID Kos yang akan di update : ");
-	scanf("%d", &Cek.IdKos);
-	
-	while(!feof(view_int))
-		{
-			fflush(stdin);
-						
-			fscanf(view_int,"%d %lld %d %f %f %f %d", &ArrayKos[i].tipe, &ArrayKos[i].harga, &ArrayKos[i].fasilitas, &ArrayKos[i].PanjangKamar, &ArrayKos[i].LebarKamar, &ArrayKos[i].LuasKamar, &ArrayKos[i].IdKos);
-			fflush(stdin);
-							
-			fscanf(view_string_provinsi," %[^\n]s", &ArrayKos[i].lokasi.provinsi);
-		    fscanf(view_string_kabupaten," %[^\n]s", &ArrayKos[i].lokasi.Kabupaten);
-		    fscanf(view_string_jalan," %[^\n]s", &ArrayKos[i].lokasi.jalan);
-		    fscanf(view_NamaPemilikKos," %[^\n]s", &ArrayKos[i].NamaPemilikKos);
-			i++;
-			
-			Update[index].IdKos = ArrayKos[i].IdKos;
-//			index++;
-		}
-		
-	
-		
-	while(index <= i){
-		if(ArrayKos[i].IdKos == Cek.IdKos){
-			add = 1;
-			system("cls");
-			printf("\n\n\t\t\t\t ID kos yang akan di Update : %d ", ArrayKos[i].IdKos);
-		}
-	}
-	if(add != 1){
-		printf("\n\nSedang Dalam Perbaikan\n\n");
-	}
-	
-		fclose(view_FlagTotalData);
-		fclose(view_string_provinsi);
-		fclose(view_int);
-		fclose(view_string_kabupaten);
-		fclose(view_string_jalan);
-		fclose(view_NamaPemilikKos);
-	//printf("\n\n\n\n\t\t\t\t\tUpdate Kos dalam progress yaa ...\n\n\n\n\n");
-	system("Pause");
-	Pemilik_Kos();
-}
-
-
 
 int main(){
 	fullscreen();
