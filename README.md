@@ -7,6 +7,9 @@
 ### Tampilan Menu Pemilik Kos
 ![Screenshot (84)](https://user-images.githubusercontent.com/75284893/147586995-ee3cbf12-9e6b-4536-933f-40f2f7017e60.png)
 
+### Tampilan Update Kos
+![Screenshot (88)](https://user-images.githubusercontent.com/75284893/147651191-2e63d2a2-c9c6-4459-8f06-e2936d2f23db.png)
+
 ### Tampilan Menu Penyewa Kos
 ![Screenshot (85)](https://user-images.githubusercontent.com/75284893/147587051-9f104e5f-2fb4-4870-bec9-571350ab7605.png)
 
