@@ -19,7 +19,6 @@ struct lokasi_kos{
 	char jalan[150];
 };
 
-
 struct pemilik_kos{
 	long long int harga;
 	lokasi_kos lokasi;
