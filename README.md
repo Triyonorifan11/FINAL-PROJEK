@@ -47,6 +47,7 @@ Nama Anggota:
 - [x] pointer
 - [x] Operasi File
 - [x] Selection Sort
+- [x] Update Data
 
 
 # list menu yang ditawarkan
